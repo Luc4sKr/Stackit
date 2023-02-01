@@ -20,7 +20,7 @@ namespace Stackit.Domain.Entities
         public string Content { get; set; }
         
         [Column("publicationDate")]        
-        public DateTime PublicationDate { get; set; }
+        public DateTime? PublicationDate { get; set; }
 
         [Column("UserId")]
         public int UserId { get; set; }
