@@ -1,4 +1,5 @@
 ﻿using Stackit.Domain.Entities;
+using Stackit.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,7 @@ namespace Stackit.Domain.DTO
         public string username { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public ProfileEnum? profile { get; set; }
         public virtual List<PublicationDTO> publications { get; set; }
     
         public User MapToEntity()
@@ -23,7 +25,8 @@ namespace Stackit.Domain.DTO
                 Id = id,
                 Username = username,
                 Email = email,
-                Password = password
+                Password = password,
+                Profile = profile
             };
         }
 
@@ -34,7 +37,8 @@ namespace Stackit.Domain.DTO
                 id = user.Id,
                 username = user.Username,
                 email = user.Email,
-                password = user.Password
+                password = user.Password,
+                profile = user.Profile
             };
         }
     }

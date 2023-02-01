@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Stackit.Infra.Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SQLServerContext>
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 
 var app = builder.Build();
 

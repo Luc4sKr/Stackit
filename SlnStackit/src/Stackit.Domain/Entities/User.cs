@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stackit.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,6 +22,9 @@ namespace Stackit.Domain.Entities
 
         [Column("password")]
         public string Password { get; set; }
+
+        [Column("profile")]
+        public ProfileEnum? Profile { get; set; }
 
         [Column("publications")]
         public virtual List<Publication> Publications { get; set; }
