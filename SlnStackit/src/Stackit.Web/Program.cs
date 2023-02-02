@@ -13,6 +13,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SQLServerContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 // ** Dependency Injection
 // Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -22,6 +24,11 @@ builder.Services.AddScoped<IPublicationRepotitory, PublicationRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
 
+builder.Services.AddSession(session =>
+{
+    session.Cookie.HttpOnly = true;
+    session.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
