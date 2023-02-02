@@ -24,6 +24,9 @@ builder.Services.AddScoped<IPublicationRepotitory, PublicationRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
 
+// Session
+builder.Services.AddScoped<Stackit.Web.Helper.ISession, Stackit.Web.Helper.Session>();
+
 builder.Services.AddSession(session =>
 {
     session.Cookie.HttpOnly = true;
@@ -44,6 +47,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
