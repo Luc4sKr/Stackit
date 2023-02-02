@@ -1,14 +1,16 @@
 ﻿using Stackit.Domain.Entities;
+using Stackit.Domain.DTO;
 using Stackit.Domain.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Stackit.Domain.IServices;
 
 namespace Stackit.Application.Services.SQLServerServices
 {
-    public class UserService : IUserRepository
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 
@@ -18,27 +20,35 @@ namespace Stackit.Application.Services.SQLServerServices
         }
 
 
-        public IQueryable<User> FindAll()
+        public List<UserDTO> FindAll()
+        {
+            return _userRepository.FindAll()
+                .Select(user => new UserDTO()
+                {
+                    id = user.Id,
+                    username = user.Username,
+                    email = user.Email,
+                    password = user.Password,
+                    profile = user.Profile
+                }).ToList();
+        }
+
+        public Task<UserDTO> FindById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> FindById(int id)
+        public Task<int> Save(UserDTO entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> Save(User entity)
+        public Task<int> Update(UserDTO entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> Update(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> Delete(User entity)
+        public Task<int> Delete(UserDTO entity)
         {
             throw new NotImplementedException();
         }

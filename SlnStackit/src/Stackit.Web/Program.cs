@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Stackit.Application.Services.SQLServerServices;
 using Stackit.Domain.IRepositories;
 using Stackit.Domain.IServices;
 using Stackit.Infra.Data.Context;
@@ -18,8 +19,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPublicationRepotitory, PublicationRepository>();
 
 // Services
-builder.Services.AddScoped<IUserService, IUserService>();
-builder.Services.AddScoped<IPublicationService, IPublicationService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPublicationService, PublicationService>();
 
 
 var app = builder.Build();

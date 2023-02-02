@@ -9,5 +9,6 @@ namespace Stackit.Domain.IRepositories
 {
     public interface IPublicationRepotitory : IBaseRepository<Publication>
     {
+        IQueryable<Publication> FindAllByUserId(int userId);
     }
 }

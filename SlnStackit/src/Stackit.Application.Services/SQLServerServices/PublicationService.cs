@@ -20,7 +20,7 @@ namespace Stackit.Application.Services.SQLServerServices
         }
 
 
-        public List<PublicationDTO> FindAll(int userId)
+        public List<PublicationDTO> FindAll()
         {
             return _publicationRepository.FindAll()
                 .Select(publication => new PublicationDTO()
@@ -38,7 +38,12 @@ namespace Stackit.Application.Services.SQLServerServices
                         password = publication.User.Password,
                         profile = publication.User.Profile
                     }
-                }).Where(user => user.userId == userId).ToList();
+                }).ToList();
+        }
+
+        public List<PublicationDTO> FindAllByUserId(int userId)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<PublicationDTO> FindById(int id)
@@ -46,17 +51,19 @@ namespace Stackit.Application.Services.SQLServerServices
             throw new NotImplementedException();
         }
 
-        public Task<int> Save(PublicationDTO entity)
+        public Task<int> Save(PublicationDTO entityDTO)
+        {
+            entityDTO.publicationDate = DateTime.Now;
+
+            return _publicationRepository.Save(entityDTO.MapToEntity());
+        }
+
+        public Task<int> Update(PublicationDTO entityDTO)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> Update(PublicationDTO entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> Delete(PublicationDTO entity)
+        public Task<int> Delete(PublicationDTO entityDTO)
         {
             throw new NotImplementedException();
         }
