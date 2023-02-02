@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Stackit.Infra.Data.Repositories
 {
-    public class BaseReporitory<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly SQLServerContext _context;
 
-        public BaseReporitory(SQLServerContext context)
+        public BaseRepository(SQLServerContext context)
         {
             _context = context;
         }

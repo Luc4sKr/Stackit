@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Stackit.Domain.IRepositories;
+using Stackit.Domain.IServices;
 using Stackit.Infra.Data.Context;
+using Stackit.Infra.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,16 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SQLServerContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
+// ** Dependency Injection
+// Repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPublicationRepotitory, PublicationRepository>();
+
+// Services
+builder.Services.AddScoped<IUserService, IUserService>();
+builder.Services.AddScoped<IPublicationService, IPublicationService>();
+
 
 var app = builder.Build();
 

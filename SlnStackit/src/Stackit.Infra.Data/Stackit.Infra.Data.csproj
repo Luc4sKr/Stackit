@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Stackit.Domain\Stackit.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Map\" />
-  </ItemGroup>
-
 </Project>

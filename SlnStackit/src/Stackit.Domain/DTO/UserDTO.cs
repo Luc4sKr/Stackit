@@ -16,7 +16,7 @@ namespace Stackit.Domain.DTO
         public string email { get; set; }
         public string password { get; set; }
         public ProfileEnum? profile { get; set; }
-        public virtual List<PublicationDTO> publications { get; set; }
+        //public virtual List<PublicationDTO> publications { get; set; }
     
         public User MapToEntity()
         {
