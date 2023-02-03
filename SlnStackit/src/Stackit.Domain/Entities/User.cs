@@ -27,7 +27,7 @@ namespace Stackit.Domain.Entities
         public ProfileEnum? Profile { get; set; }
 
         [Column("publications")]
-        public virtual List<Publication> Publications { get; set; }
+        public virtual ICollection<Publication>? Publications { get; set; }
 
 
         public bool IsValidPassword(string password)

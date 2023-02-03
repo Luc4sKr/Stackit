@@ -9,5 +9,6 @@ namespace Stackit.Domain.IRepositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<User> FindByUsernameAndPassword(string username, string password);
     }
 }

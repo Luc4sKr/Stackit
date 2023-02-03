@@ -17,5 +17,12 @@ namespace Stackit.Infra.Data.Repositories
         {
             _context = context;
         }
+
+        public async Task<User> FindByUsernameAndPassword(string username, string password)
+        {
+            return _context.Set<User>()
+                .FirstOrDefault(user => user.Username == username &
+                                user.Password == password);
+        }
     }
 }

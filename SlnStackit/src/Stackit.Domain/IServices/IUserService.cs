@@ -10,5 +10,6 @@ namespace Stackit.Domain.IServices
 {
     public interface IUserService : IBaseService<UserDTO>
     {
+        Task<UserDTO> FindByUsernameAndPassword(string username, string password);
     }
 }

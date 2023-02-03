@@ -19,22 +19,21 @@ namespace Stackit.Web.Controllers
 
         public IActionResult Index()
         {
-            var user = _session.FetchUserSession();
+            /*var user = _session.FetchUserSession();
 
             if (user == null)
             {
                 ViewData["Layout"] = "_LayoutLoggedOut";
             }
-
-            if (user.Profile == ProfileEnum.Admin)
+            else if (user.Profile == ProfileEnum.Admin)
             {
                 ViewData["Layout"] = "_LayoutAdmin";
             }
 
-            if (user.Profile == ProfileEnum.Default)
+            else if (user.Profile == ProfileEnum.Default)
             {
                 ViewData["Layout"] = "_LayoutLoggedOut";
-            }
+            }*/
 
             return View();
         }

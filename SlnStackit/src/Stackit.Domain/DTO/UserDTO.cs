@@ -13,10 +13,10 @@ namespace Stackit.Domain.DTO
     {
         public int id { get; set; }
         public string username { get; set; }
-        public string email { get; set; }
+        public string? email { get; set; }
         public string password { get; set; }
         public ProfileEnum? profile { get; set; }
-        //public virtual List<PublicationDTO> publications { get; set; }
+        public virtual ICollection<PublicationDTO>? publications { get; set; }
     
         public User MapToEntity()
         {
@@ -26,7 +26,8 @@ namespace Stackit.Domain.DTO
                 Username = username,
                 Email = email,
                 Password = password,
-                Profile = profile
+                Profile = profile,
+                Publications = null
             };
         }
 
@@ -38,7 +39,8 @@ namespace Stackit.Domain.DTO
                 username = user.Username,
                 email = user.Email,
                 password = user.Password,
-                profile = user.Profile
+                profile = user.Profile,
+                publications = null
             };
         }
     }
