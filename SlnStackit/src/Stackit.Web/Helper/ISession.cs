@@ -1,4 +1,5 @@
-﻿using Stackit.Domain.Entities;
+﻿using Stackit.Domain.DTO;
+using Stackit.Domain.Entities;
 
 namespace Stackit.Web.Helper
 {
@@ -6,6 +7,6 @@ namespace Stackit.Web.Helper
     {
         void CreateUserSession(User user);
         void RemoveUserSession();
-        User FetchUserSession();
+        UserDTO FetchUserSession();
     }
 }

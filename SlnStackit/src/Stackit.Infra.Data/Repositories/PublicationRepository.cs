@@ -20,7 +20,9 @@ namespace Stackit.Infra.Data.Repositories
 
         public IQueryable<Publication> FindAllByUserId(int userId)
         {
-            return _context.Set<Publication>().Where(publication => publication.UserId == userId);
+            return _context.Set<Publication>()
+                .Where(publication => publication.UserId == userId)
+                .OrderByDescending(publication => publication.Id);
         }
     }
 }

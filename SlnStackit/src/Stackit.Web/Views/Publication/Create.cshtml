@@ -1,0 +1,23 @@
+﻿@model Stackit.Domain.DTO.PublicationDTO
+
+<form asp-controller="Publication" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input asp-for="title" type="text" class="form-control" id="login">
+        @Html.ValidationMessageFor(message => message.title)
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <input asp-for="content" type="text" class="form-control" id="login">
+        @Html.ValidationMessageFor(message => message.content)
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

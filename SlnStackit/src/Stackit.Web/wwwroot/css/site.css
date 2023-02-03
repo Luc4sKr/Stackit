@@ -24,7 +24,7 @@ body {
 }
 
 .publications-container {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -34,6 +34,17 @@ body {
 
 .profile-image {
     width: 200px;
+}
+
+.mini-user-profile {
+    display: flex;
+    flex-direction: row;
+}
+
+.mini-profile-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 #btn-create-publication {

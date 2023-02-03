@@ -29,7 +29,8 @@ namespace Stackit.Application.Services.SQLServerServices
                     username = user.Username,
                     email = user.Email,
                     password = user.Password,
-                    profile = user.Profile
+                    profile = user.Profile,
+                    publications = null
                 }).ToList();
         }
 

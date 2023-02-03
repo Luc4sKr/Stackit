@@ -1,5 +1,6 @@
 ﻿using Stackit.Domain.Entities;
 using Stackit.Domain.Enums;
+using Stackit.Domain.IServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,6 +34,15 @@ namespace Stackit.Domain.DTO
 
         public UserDTO MapToDTO(User user)
         {
+            /*var userPublications = user.Publications.Select(publications => new PublicationDTO
+            {
+                id = publications.Id,
+                title = publications.Title,
+                content = publications.Content,
+                publicationDate = publications.PublicationDate,
+                userId = user.Id,
+            }).ToList();*/
+
             return new UserDTO
             {
                 id = user.Id,

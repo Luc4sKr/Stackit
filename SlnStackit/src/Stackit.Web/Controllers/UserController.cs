@@ -9,20 +9,24 @@ namespace Stackit.Web.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IPublicationService _publicationService;
         private readonly Helper.ISession _session;
 
-        public UserController(IUserService userService, 
+        public UserController(IUserService userService,
+                              IPublicationService publicationService,
                               Helper.ISession session)
         {
             _userService = userService;
+            _publicationService = publicationService;
             _session = session;
         }
 
         public IActionResult Index()
         {
-            User user = _session.FetchUserSession();
+            UserDTO userDTO = _session.FetchUserSession();
+            userDTO.publications = _publicationService.FindAllByUserId(userDTO.id);
 
-            return View(user);
+            return View(userDTO);
         }
     }
 }

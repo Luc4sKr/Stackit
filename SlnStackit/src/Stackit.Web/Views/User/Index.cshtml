@@ -1,4 +1,4 @@
-﻿@model Stackit.Domain.Entities.User
+﻿@model Stackit.Domain.DTO.UserDTO
 
 
 <div class="container">
@@ -7,14 +7,24 @@
     </figure>
     <div class="publications-container">
         <div class="btn-container">
-            <button id="btn-create-publication" class="btn btn-primary">Create publication</button>
+            <a id="btn-create-publication" class="btn btn-primary" asp-controller="Publication" asp-action="Create">
+                Create publication
+            </a>
         </div>
-        <div class="user-publications">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+        @foreach(var item in Model.publications)
+        {
+            <div class="user-publications">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mini-user-profile">
+                            <img class="mini-profile-image" src="~/images/userProfile.png" alt="">
+                            <p>@Model.username</p>
+                        </div>
+                        <h5 class="card-title">@item.title</h5>
+                        <p>@item.content</p>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>   
+        }
     </div>
 </div>

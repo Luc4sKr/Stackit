@@ -43,7 +43,23 @@ namespace Stackit.Application.Services.SQLServerServices
 
         public List<PublicationDTO> FindAllByUserId(int userId)
         {
-            throw new NotImplementedException();
+            return _publicationRepository.FindAllByUserId(userId)
+                .Select(publication => new PublicationDTO()
+                {
+                    id = publication.Id,
+                    title = publication.Title,
+                    content = publication.Content,
+                    publicationDate = publication.PublicationDate,
+                    userId = publication.UserId,
+                    user = new UserDTO()
+                    {
+                        id = publication.User.Id,
+                        username = publication.User.Username,
+                        email = publication.User.Email,
+                        password = publication.User.Password,
+                        profile = publication.User.Profile
+                    }
+                }).ToList();
         }
 
         public Task<PublicationDTO> FindById(int id)

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Stackit.Domain.DTO;
 using Stackit.Domain.Entities;
 
 namespace Stackit.Web.Helper
@@ -24,13 +25,17 @@ namespace Stackit.Web.Helper
             _httpContext.HttpContext.Session.Remove(LOGGED_USER_SESSION);
         }
 
-        public User FetchUserSession()
+        public UserDTO FetchUserSession()
         {
             string userSession = _httpContext.HttpContext.Session.GetString(LOGGED_USER_SESSION);
 
             if (string.IsNullOrEmpty(userSession)) return null;
 
-            return JsonConvert.DeserializeObject<User>(userSession);
+            User user = JsonConvert.DeserializeObject<User>(userSession);
+            UserDTO userDTO = new UserDTO();
+            userDTO = userDTO.MapToDTO(user);
+
+            return userDTO;
         }
     }
 }

@@ -5,8 +5,7 @@ using Stackit.Web.Filters;
 
 namespace Stackit.Web.Controllers
 {
-    //[PageForAdminUsers]
-    //[Route("admin")]
+    [PageForAdminUsers]
     public class AdminController : Controller
     {
         private readonly IUserService _userService;
@@ -19,11 +18,22 @@ namespace Stackit.Web.Controllers
             _publicationService = publicationService;
         }
 
-        //[Route("dashboard")]
         public IActionResult Dashboard()
         {
             
             return View();
+        }
+
+        public async Task<IActionResult> Users()
+        {
+            var userDTO = _userService.FindAll();
+            return View(userDTO);
+        }
+
+        public async Task<IActionResult> Publications()
+        {
+            var publicationDTO = _publicationService.FindAll();
+            return View(publicationDTO);
         }
     }
 }

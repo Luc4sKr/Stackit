@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Stackit.Domain.DTO;
 using Stackit.Domain.Entities;
 using Stackit.Web.Helper;
 
@@ -14,8 +15,10 @@ namespace Stackit.Web.ViewComponents
             if (string.IsNullOrEmpty(userSession)) return View("LoggedOut");
 
             User user = JsonConvert.DeserializeObject<User>(userSession);
+            UserDTO userDTO = new UserDTO();
+            userDTO = userDTO.MapToDTO(user);
 
-            return View(user);
+            return View(userDTO);
         }
     }
 }
