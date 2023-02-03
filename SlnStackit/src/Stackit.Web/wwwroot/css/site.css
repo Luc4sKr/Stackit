@@ -16,3 +16,27 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.full-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.publications-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btn-container {
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 200px;
+}
+
+#btn-create-publication {
+    width: 100%;
+}
+

@@ -20,7 +20,7 @@ namespace Stackit.Web.Controllers
         }
 
 
-        public IActionResult Sigin()
+        public IActionResult Signin()
         {
             if (_session.FetchUserSession() != null) return RedirectToAction("Index", "Home");
 

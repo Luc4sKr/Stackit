@@ -39,9 +39,10 @@ namespace Stackit.Application.Services.SQLServerServices
             return dto.MapToDTO(await _userRepository.FindByUsernameAndPassword(username, password));
         }
 
-        public Task<UserDTO> FindById(int id)
+        public async Task<UserDTO> FindById(int id)
         {
-            throw new NotImplementedException();
+            var dto = new UserDTO();
+            return dto.MapToDTO(await _userRepository.FindById(id));
         }
 
         public Task<int> Save(UserDTO entity)
