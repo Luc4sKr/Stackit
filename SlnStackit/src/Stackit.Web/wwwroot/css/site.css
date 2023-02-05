@@ -51,3 +51,11 @@ body {
     width: 100%;
 }
 
+.publication-card {
+    margin-bottom: 15px;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+}

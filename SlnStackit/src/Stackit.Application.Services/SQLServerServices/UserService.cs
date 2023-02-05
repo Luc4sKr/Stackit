@@ -1,6 +1,7 @@
 ﻿using Stackit.Domain.Entities;
 using Stackit.Domain.DTO;
 using Stackit.Domain.IRepositories;
+using Stackit.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,7 @@ namespace Stackit.Application.Services.SQLServerServices
 
         public Task<int> Save(UserDTO entity)
         {
+            entity.profile = ProfileEnum.Default;
             return _userRepository.Save(entity.MapToEntity());
         }
 

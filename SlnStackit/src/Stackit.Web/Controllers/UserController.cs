@@ -3,9 +3,12 @@ using Stackit.Domain.DTO;
 using Stackit.Domain.Entities;
 using Stackit.Domain.IServices;
 using Stackit.Web.Helper;
+using Microsoft.AspNetCore.Components;
+using Stackit.Web.Filters;
 
 namespace Stackit.Web.Controllers
 {
+    [PageForLoggedUsers]
     public class UserController : Controller
     {
         private readonly IUserService _userService;

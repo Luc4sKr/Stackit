@@ -2,8 +2,11 @@
 
 
 <div class="container">
-    <figure class="full-center">
+    <figure class="full-center flex-column">
         <img class="profile-image" src="~/images/userProfile.png" alt=""/>
+        <figcaption>
+            <h1>@Model.username</h1>
+        </figcaption>
     </figure>
     <div class="publications-container">
         <div class="btn-container">
@@ -14,12 +17,18 @@
         @foreach(var item in Model.publications)
         {
             <div class="user-publications">
-                <div class="card">
+                <div class="card publication-card">
                     <div class="card-body">
-                        <div class="mini-user-profile">
-                            <img class="mini-profile-image" src="~/images/userProfile.png" alt="">
-                            <p>@Model.username</p>
+                        <div class="card-top">
+                            <div class="mini-user-profile">
+                                <img class="mini-profile-image" src="~/images/userProfile.png" alt="">
+                                <p>@Model.username</p>
+                            </div>
+                            <div class="publication-date">
+                                <span>@item.publicationDate</span>
+                            </div>
                         </div>
+                        
                         <h5 class="card-title">@item.title</h5>
                         <p>@item.content</p>
                     </div>
