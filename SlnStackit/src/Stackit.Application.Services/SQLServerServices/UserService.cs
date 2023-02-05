@@ -47,20 +47,21 @@ namespace Stackit.Application.Services.SQLServerServices
             return dto.MapToDTO(await _userRepository.FindById(id));
         }
 
-        public Task<int> Save(UserDTO entity)
+        public Task<int> Save(UserDTO entityDTO)
         {
-            entity.profile = ProfileEnum.Default;
-            return _userRepository.Save(entity.MapToEntity());
+            entityDTO.profile = ProfileEnum.Default;
+            return _userRepository.Save(entityDTO.MapToEntity());
         }
 
-        public Task<int> Update(UserDTO entity)
+        public Task<int> Update(UserDTO entityDTO)
         {
-            throw new NotImplementedException();
+            return _userRepository.Update(entityDTO.MapToEntity());
         }
 
-        public Task<int> Delete(UserDTO entity)
+        public async Task<int> Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _userRepository.FindById(id);
+            return await _userRepository.Delete(entity);
         }
     }
 }

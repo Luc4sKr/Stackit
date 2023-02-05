@@ -24,12 +24,20 @@ namespace Stackit.Web.Controllers
 
         public IActionResult Create()
         {
-            /*UserDTO userDTO = _session.FetchUserSession();
-            ViewData["user"] = userDTO;*/
-
             return View();
         }
 
+        public async Task<IActionResult> Edit(int id)
+        {
+            PublicationDTO publicationDTO = await _publictionService.FindById(id);
+            return View(publicationDTO);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _publictionService.Delete(id);
+            return RedirectToAction("Publications", "Admin");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(PublicationDTO publicationDTO)
@@ -40,6 +48,25 @@ namespace Stackit.Web.Controllers
                 {
                     publicationDTO.userId = _session.FetchUserSession().id;
                     await _publictionService.Save(publicationDTO);
+                    return RedirectToAction("Index", "User");
+                }
+
+                return RedirectToAction("Index", "User");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "User");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(PublicationDTO publicationDTO)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _publictionService.Update(publicationDTO);
                     return RedirectToAction("Index", "User");
                 }
 

@@ -62,26 +62,27 @@ namespace Stackit.Application.Services.SQLServerServices
                 }).ToList();
         }
 
-        public Task<PublicationDTO> FindById(int id)
+        public async Task<PublicationDTO> FindById(int id)
         {
-            throw new NotImplementedException();
+            PublicationDTO publicationDTO = new PublicationDTO();
+            return publicationDTO.MapToDTO(await _publicationRepository.FindById(id));
         }
 
         public Task<int> Save(PublicationDTO entityDTO)
         {
             entityDTO.publicationDate = DateTime.Now;
-
             return _publicationRepository.Save(entityDTO.MapToEntity());
         }
 
         public Task<int> Update(PublicationDTO entityDTO)
         {
-            throw new NotImplementedException();
+            return _publicationRepository.Update(entityDTO.MapToEntity());
         }
 
-        public Task<int> Delete(PublicationDTO entityDTO)
+        public async Task<int> Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _publicationRepository.FindById(id);
+            return await _publicationRepository.Delete(entity);
         }
     }
 }

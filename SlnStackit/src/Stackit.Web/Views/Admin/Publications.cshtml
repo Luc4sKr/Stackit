@@ -1,50 +1,60 @@
 ﻿@model IEnumerable<Stackit.Domain.DTO.PublicationDTO>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.publicationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.userId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@{
+    ViewData["Title"] = "Publications list";
+}
+
+<div class="">
+    <h1 class="display-4">Contact list</h1>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a asp-controller="Contato" asp-action="Create" class="btn btn-primary" role="button">Add Contact</a>
+    </div>
+
+    <table id="contact-table" class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.publicationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.userId)
-                </td>
-                <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                    <a class="btn btn-danger" href="#" onclick="deleteCategoria(@item.id)">Delete</a>
-                </td>
+                @if (Model != null && Model.Any())
+                {
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Publication Date</th>
+                    <th scope="col"></th>
+                }
+                else
+                {
+                    <th scope="col"></th>
+                }
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var publication in Model)
+                {
+                    <tr>
+                        <th scope="row">@publication.id</th>
+                        <td>@publication.title</td>
+                        <td>@publication.content</td>
+                        <td>@publication.publicationDate</td>
+                        <td>
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Publication" asp-action="Edit" asp-route-id="@publication.id" role="button" class="btn btn-primary">Edit</a>
+                            <a asp-controller="Publication" asp-action="Delete" asp-route-id="@publication.id" role="button" class="btn btn-danger">Delete</a>
+                        </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                    <tr class="odd">
+                        <td valign="top" colspan="5">No publications found</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

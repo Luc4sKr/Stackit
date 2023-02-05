@@ -1,4 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// DATATABLE
+$(document).ready(function () {
+    getDataTable("#contact-table");
+    getDataTable("#user-table")
+});
 
-// Write your JavaScript code.
+function getDataTable(id) {
+    $(id).DataTable({
+        "ordering": true,
+        "paging": true,
+        "searching": true,
+    });
+}
+
+// ALERT
+$(".close-alert").click(function () {
+    $(".alert").hide("hide");
+})
