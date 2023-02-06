@@ -9,6 +9,7 @@ namespace Stackit.Domain.Enums
     public enum ProfileEnum
     {
         Admin = 1,
-        Default = 2
+        Default = 2,
+        LoggedOut = 3
     }
 }

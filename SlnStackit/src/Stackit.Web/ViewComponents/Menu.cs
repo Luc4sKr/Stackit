@@ -12,9 +12,19 @@ namespace Stackit.Web.ViewComponents
         {
             string userSession = HttpContext.Session.GetString(Session.LOGGED_USER_SESSION);
 
-            if (string.IsNullOrEmpty(userSession)) return View("LoggedOut");
+            //if (string.IsNullOrEmpty(userSession)) return View("LoggedOut");
 
-            User user = JsonConvert.DeserializeObject<User>(userSession);
+            User user = new User();
+
+            if (string.IsNullOrEmpty(userSession))
+            {
+                user.Profile = Domain.Enums.ProfileEnum.LoggedOut;
+            }
+            else
+            {
+                user = JsonConvert.DeserializeObject<User>(userSession);
+            }
+            
             UserDTO userDTO = new UserDTO();
             userDTO = userDTO.MapToDTO(user);
 

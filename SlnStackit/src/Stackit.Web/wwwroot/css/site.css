@@ -59,3 +59,30 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+.profile-link {
+    color: #000;
+}
+
+.profile-link:hover {
+    color: #555;
+}
+
+#btn-signin {
+    margin-right: 2.5px;
+}
+
+#btn-signup {
+    margin-left: 2.5px;
+}
+
+.home-profile-image {
+    width: 25px;
+    height: 25px;
+}
+
+.home-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

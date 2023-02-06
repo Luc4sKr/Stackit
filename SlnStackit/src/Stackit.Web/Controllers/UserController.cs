@@ -27,8 +27,20 @@ namespace Stackit.Web.Controllers
         public IActionResult Index()
         {
             UserDTO userDTO = _session.FetchUserSession();
+
+            if (userDTO == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             userDTO.publications = _publicationService.FindAllByUserId(userDTO.id);
 
+            return View(userDTO);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            UserDTO userDTO = await _userService.FindById(id);
             return View(userDTO);
         }
     }

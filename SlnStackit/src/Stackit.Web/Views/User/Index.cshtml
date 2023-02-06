@@ -3,10 +3,12 @@
 
 <div class="container">
     <figure class="full-center flex-column">
-        <img class="profile-image" src="~/images/userProfile.png" alt=""/>
-        <figcaption>
-            <h1>@Model.username</h1>
-        </figcaption>
+        <a asp-controller="User" asp-action="Edit" asp-route-id="@Model.id" class="profile-link full-center flex-column text-decoration-none">
+            <img class="profile-image" src="~/images/userProfile.png" alt=""/>
+            <figcaption>
+                <h1>@Model.username</h1>
+            </figcaption>
+        </a>
     </figure>
     <div class="publications-container">
         <div class="btn-container">
