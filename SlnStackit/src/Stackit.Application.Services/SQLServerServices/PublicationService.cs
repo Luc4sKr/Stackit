@@ -41,6 +41,27 @@ namespace Stackit.Application.Services.SQLServerServices
                 }).ToList();
         }
 
+        public List<PublicationDTO> FindAllDescending()
+        {
+            return _publicationRepository.FindAllDescending()
+               .Select(publication => new PublicationDTO()
+               {
+                   id = publication.Id,
+                   title = publication.Title,
+                   content = publication.Content,
+                   publicationDate = publication.PublicationDate,
+                   userId = publication.UserId,
+                   user = new UserDTO()
+                   {
+                       id = publication.User.Id,
+                       username = publication.User.Username,
+                       email = publication.User.Email,
+                       password = publication.User.Password,
+                       profile = publication.User.Profile
+                   }
+               }).ToList();
+        }
+
         public List<PublicationDTO> FindAllByUserId(int userId)
         {
             return _publicationRepository.FindAllByUserId(userId)

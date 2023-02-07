@@ -24,7 +24,7 @@ namespace Stackit.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_publicationService.FindAll()); ;
+            return View(_publicationService.FindAllDescending());
         }
 
         public IActionResult Privacy()

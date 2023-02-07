@@ -11,5 +11,6 @@ namespace Stackit.Domain.IServices
     public interface IPublicationService : IBaseService<PublicationDTO>
     {
         List<PublicationDTO> FindAllByUserId(int userId);
+        List<PublicationDTO> FindAllDescending();
     }
 }
