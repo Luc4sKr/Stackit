@@ -43,6 +43,12 @@ namespace Stackit.Web.Controllers
             return View(userDTO);
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _userService.Delete(id);
+            return RedirectToAction("Users", "Admin");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Edit(UserDTO userDTO)
         {

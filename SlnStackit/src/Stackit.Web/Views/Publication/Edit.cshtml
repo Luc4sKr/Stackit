@@ -1,22 +1,30 @@
 ﻿@model Stackit.Domain.DTO.PublicationDTO
 
-<form asp-controller="Publication" asp-action="Edit" method="post">
-    <input type="hidden" asp-for="id" />
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input asp-for="title" type="text" class="form-control" id="login">
-        @Html.ValidationMessageFor(message => message.title)
-    </div>
-    <div class="mb-3">
-        <label for="content" class="form-label">Content</label>
-        <input asp-for="content" type="text" class="form-control" id="login">
-        @Html.ValidationMessageFor(message => message.content)
-    </div>
-    <input type="hidden" asp-for="userId"/>
+@{
+    ViewData["Title"] = "Edit publication";
+}
+
+<div class="form-container">
+    <form asp-controller="Publication" asp-action="Edit" method="post" class="base-form">
+        <input type="hidden" asp-for="id" />
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input asp-for="title" type="text" class="form-control" id="title">
+                @Html.ValidationMessageFor(message => message.title)
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea asp-for="content" type="text" class="form-control publication-textarea" id="content"></textarea>
+                @Html.ValidationMessageFor(message => message.content)
+        </div>
+        <input type="hidden" asp-for="publicationDate" />
+        <input type="hidden" asp-for="userId"/>
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
 
 @section Scripts {
     @{

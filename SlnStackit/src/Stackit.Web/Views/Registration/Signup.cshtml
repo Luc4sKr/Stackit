@@ -1,24 +1,33 @@
 ﻿@model Stackit.Domain.DTO.UserDTO
 
-<form asp-controller="Registration" asp-action="Register" method="post">
-    <div class="mb-3">
-        <label for="username" class="form-label">Login</label>
-        <input asp-for="username" type="text" class="form-control" id="login">
-        @Html.ValidationMessageFor(message => message.username)
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input asp-for="email" type="email" class="form-control" id="">
-        @Html.ValidationMessageFor(message => message.email)
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input asp-for="password" type="password" class="form-control" id="">
-        @Html.ValidationMessageFor(message => message.password)
-    </div>
+@{
+    ViewData["Title"] = "Sign Up";
+}
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="form-container">
+    <h1>Sign Up</h1>
+    <form asp-controller="Registration" asp-action="Register" method="post" class="base-form">
+        <div class="mb-3">
+            <label for="username" class="form-label">Login</label>
+            <input asp-for="username" type="text" class="form-control" id="username">
+                @Html.ValidationMessageFor(message => message.username)
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input asp-for="email" type="email" class="form-control" id="email">
+                @Html.ValidationMessageFor(message => message.email)
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input asp-for="password" type="password" class="form-control" id="password">
+                @Html.ValidationMessageFor(message => message.password)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
 
 @section Scripts {
     @{

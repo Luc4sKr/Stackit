@@ -1,4 +1,10 @@
-﻿<h1>Dashboard</h1>
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
 
-<a class="btn btn-primary" asp-controller="Admin" asp-action="Users">Users</a>
-<a class="btn btn-primary" asp-controller="Admin" asp-action="Publications">Publications</a>
+<h1 class="text-center">Dashboard</h1>
+
+<div class="buttons-container">
+    <a class="btn btn-primary" asp-controller="Admin" asp-action="Users">Users</a>
+    <a class="btn btn-primary" asp-controller="Admin" asp-action="Publications">Publications</a>
+</div>
