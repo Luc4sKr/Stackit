@@ -1,10 +1,32 @@
-﻿@model Stackit.Domain.DTO.UserDTO
+﻿@model IEnumerable<Stackit.Domain.DTO.PublicationDTO>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="text-center">Publications</h1>
+    <div class="publications-container">
+        @foreach (var item in Model)
+        {
+            <div class="user-publications">
+                <div class="card publication-card">
+                    <div class="card-body">
+                        <div class="card-top">
+                            <div class="mini-user-profile">
+                                <img class="mini-profile-image" src="~/images/userProfile.png" alt="">
+                                <p>@item.user.username</p>
+                            </div>
+                            <div class="publication-date">
+                                <span>@item.publicationDate</span>
+                            </div>
+                        </div>
+
+                        <h5 class="card-title">@item.title</h5>
+                        <p>@item.content</p>
+                    </div>
+                </div>
+            </div>   
+        }
+    </div>
 </div>

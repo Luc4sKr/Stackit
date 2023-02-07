@@ -3,6 +3,7 @@ using Stackit.Web.Models;
 using System.Diagnostics;
 using Stackit.Domain.Enums;
 using Stackit.Domain.DTO;
+using Stackit.Domain.IServices;
 
 namespace Stackit.Web.Controllers
 {
@@ -10,19 +11,20 @@ namespace Stackit.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Helper.ISession _session;
+        private readonly IPublicationService _publicationService;
 
         public HomeController(ILogger<HomeController> logger,
-                              Helper.ISession session)
+                              Helper.ISession session,
+                              IPublicationService publicationService)
         {
             _logger = logger;
             _session = session;
+            _publicationService = publicationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            UserDTO userDTO = _session.FetchUserSession();
-
-            return View(userDTO);
+            return View(_publicationService.FindAll()); ;
         }
 
         public IActionResult Privacy()
