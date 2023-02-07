@@ -1,1 +1,26 @@
-﻿
+﻿@model Stackit.Domain.DTO.UserDTO
+
+<form asp-controller="User" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="id"/>
+    <div class="mb-3">
+        <label for="username" class="form-label">Login</label>
+        <input asp-for="username" type="text" class="form-control" id="login">
+        @Html.ValidationMessageFor(message => message.username)
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input asp-for="email" type="email" class="form-control" id="login">
+        @Html.ValidationMessageFor(message => message.email)
+    </div>
+    <input type="hidden" asp-for="password"/>
+    <input type="hidden" asp-for="profile"/>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

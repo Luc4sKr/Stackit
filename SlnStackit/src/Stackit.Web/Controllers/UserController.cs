@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Stackit.Domain.DTO;
-using Stackit.Domain.Entities;
 using Stackit.Domain.IServices;
-using Stackit.Web.Helper;
 using Microsoft.AspNetCore.Components;
 using Stackit.Web.Filters;
+using Stackit.Application.Services.SQLServerServices;
 
 namespace Stackit.Web.Controllers
 {
@@ -42,6 +41,25 @@ namespace Stackit.Web.Controllers
         {
             UserDTO userDTO = await _userService.FindById(id);
             return View(userDTO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserDTO userDTO)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _userService.Update(userDTO);
+                    return RedirectToAction("Index", "User");
+                }
+
+                return RedirectToAction("Index", "User");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "User");
+            }
         }
     }
 }
