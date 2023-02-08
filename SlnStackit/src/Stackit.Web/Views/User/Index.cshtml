@@ -36,7 +36,13 @@
                         </div>
                         
                         <h5 class="card-title">@item.title</h5>
-                        <p>@item.content</p>
+                        <p class="publication-content">@item.content</p>
+                        
+                        <div class="delete-publication-container">
+                            <a asp-controller="Publication" asp-action="Delete" asp-route-id="@item.id" class="text-decoration-none delete-publication-link">
+                                <img src="~/images/trash.png" alt="" class="trash-image">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>   

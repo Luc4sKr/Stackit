@@ -36,7 +36,7 @@ namespace Stackit.Web.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _publictionService.Delete(id);
-            return RedirectToAction("Publications", "Admin");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

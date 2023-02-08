@@ -23,9 +23,26 @@ body {
     align-items: center;
 }
 
+.trash-image {
+    width: 25px;
+    height: 25px;
+}
+
+.delete-publication-container {
+    display: block;
+}
+
+.delete-publication-link {
+    display: block;
+}
+
 .publications-container {
     width: 60%;
     margin: 0 auto;
+}
+
+.publication-content {
+    margin-bottom: 5px;
 }
 
 .btn-container {
